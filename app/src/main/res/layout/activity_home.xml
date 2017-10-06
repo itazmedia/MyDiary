@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="#501078">
+    <TableRow>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#2994b7">
+    <ImageButton
+        android:id="@+id/addnew"
+        android:layout_width="205dp"
+        android:layout_height="140dp"
+        android:padding="16dp"
+        android:background="#2994b7"
+        android:src="@drawable/add_new_document"
+        android:scaleType="fitCenter">
+    </ImageButton>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="Thêm mới"
+        android:textAlignment="center"
+        android:layout_below="@id/addnew"
+        android:textColor="#fff"
+        android:textSize="24sp"
+        />
+</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#25ac59">
+        <ImageButton
+            android:id="@+id/list"
+            android:layout_width="205dp"
+            android:layout_height="140dp"
+            android:padding="16dp"
+            android:background="#25ac59"
+            android:src="@drawable/padnote"
+            android:scaleType="fitCenter">
+        </ImageButton>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:textAlignment="center"
+            android:text="Danh sách"
+            android:layout_below="@id/list"
+            android:textColor="#fff"
+            android:textSize="24sp"
+
+            />
+    </RelativeLayout>
+</TableRow>
+    <TableRow>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#c2b71e">
+            <ImageButton
+                android:id="@+id/changePassHome"
+                android:layout_width="205dp"
+                android:layout_height="140dp"
+                android:padding="16dp"
+                android:background="#c2b71e"
+                android:src="@drawable/password"
+                android:scaleType="fitCenter">
+            </ImageButton>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="Đổi mật khẩu"
+                android:textAlignment="center"
+                android:layout_below="@id/changePassHome"
+                android:textColor="#fff"
+                android:textSize="24sp"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#330897">
+            <ImageButton
+                android:id="@+id/planHome"
+                android:layout_width="205dp"
+                android:layout_height="140dp"
+                android:padding="16dp"
+                android:background="#330897"
+                android:src="@drawable/list"
+                android:scaleType="fitCenter">
+            </ImageButton>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:textAlignment="center"
+                android:text="Kế hoạch"
+                android:layout_below="@id/planHome"
+                android:textColor="#fff"
+                android:textSize="24sp"
+
+                />
+        </RelativeLayout>
+    </TableRow>
+    <TableRow>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#a33d12">
+            <ImageButton
+                android:id="@+id/logOutHome"
+                android:layout_width="205dp"
+                android:layout_height="140dp"
+                android:padding="16dp"
+                android:background="#a33d12"
+                android:src="@drawable/logout"
+                android:scaleType="fitCenter">
+            </ImageButton>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:textAlignment="center"
+                android:text="Đăng xuất"
+                android:layout_below="@id/logOutHome"
+                android:textColor="#fff"
+                android:textSize="24sp"
+
+                />
+        </RelativeLayout>
+    </TableRow>
+
+</TableLayout>
