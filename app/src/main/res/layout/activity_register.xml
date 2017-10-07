@@ -20,7 +20,7 @@
 
         <TableRow>
             <EditText
-                android:id="@+id/txtEmail"
+                android:id="@+id/txtRegEmail"
                 android:inputType="textEmailAddress"
                 android:hint="Email"
                 android:textColorHint="#ccc"
@@ -35,11 +35,20 @@
                 android:layout_marginRight="16dp"
                 android:fontFamily="sans-serif"
                 />
+            <TextView
+                android:id="@+id/regErrEmail"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text=""
+                android:textColor="#fd3d3d"
+                android:textSize="18sp"
+                android:paddingRight="16dp"
+                />
         </TableRow>
 
         <TableRow>
             <EditText
-                android:id="@+id/txtPassword"
+                android:id="@+id/txtRegPassword"
                 android:hint="Mật khẩu"
                 android:inputType="textPassword"
                 android:textColorHint="#ccc"
@@ -54,11 +63,20 @@
                 android:layout_marginBottom="8dp"
                 android:fontFamily="sans-serif"
                 />
+            <TextView
+                android:id="@+id/regErrPass"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text=""
+                android:textColor="#fd3d3d"
+                android:textSize="18sp"
+                android:paddingRight="16dp"
+                />
         </TableRow >
 
         <TableRow>
             <EditText
-                android:id="@+id/txtRePassword"
+                android:id="@+id/txtRegRePassword"
                 android:hint="Nhập lại mật khẩu"
                 android:inputType="textPassword"
                 android:textColorHint="#ccc"
@@ -72,6 +90,15 @@
                 android:layout_marginRight="16dp"
                 android:layout_marginBottom="18dp"
                 android:fontFamily="sans-serif"
+                />
+            <TextView
+                android:id="@+id/regErrRepass"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text=""
+                android:textColor="#fd3d3d"
+                android:textSize="18sp"
+                android:paddingRight="16dp"
                 />
         </TableRow >
 
