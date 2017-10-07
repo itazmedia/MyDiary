@@ -68,10 +68,9 @@ public class MainActivity extends AppCompatActivity {
                                       Intent intent;
                                        intent = new Intent(MainActivity.this, Home.class);
                                        startActivity(intent);
-//                                     DatabaseReference posts = mDatabase.child("post");
-//                                   posts.setValue(new Post("demo", "11/01/1997"));
-//                                   posts.setValue(new Post("demo2", "12/01/1998"));
-//                                   tb("ok");
+                                       DatabaseReference posts = mDatabase.child("users");
+                                       User u = new User("trahieu97@gmail.com", "123456");
+                                        posts.push().setValue(u);
                                }
                                else
                                    tb("Thông tin đăng nhập không chính xác!!");
