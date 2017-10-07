@@ -9,6 +9,8 @@ import android.widget.ImageButton;
 public class Home extends AppCompatActivity {
     private ImageButton imgBtnList;
 
+    private  ImageButton imgAddnew;
+
     private ImageButton imgChangePassword;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,11 +26,21 @@ public class Home extends AppCompatActivity {
             }
         });
 
-        imgChangePassword = (ImageButton) findViewById(R.id.addnew);
+        imgChangePassword = (ImageButton) findViewById(R.id.changePassHome);
         imgChangePassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Home.this, ChangePasswordActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        imgAddnew = (ImageButton) findViewById(R.id.addnew);
+        imgAddnew.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Home.this, AddNewDiaryActivity.class);
                 startActivity(intent);
             }
         });
