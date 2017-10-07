@@ -8,6 +8,8 @@ import android.widget.ImageButton;
 
 public class Home extends AppCompatActivity {
     private ImageButton imgBtnList;
+
+    private ImageButton imgChangePassword;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,6 +20,15 @@ public class Home extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent();
                 intent = new Intent(Home.this, ListData.class);
+                startActivity(intent);
+            }
+        });
+
+        imgChangePassword = (ImageButton) findViewById(R.id.addnew);
+        imgChangePassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Home.this, ChangePasswordActivity.class);
                 startActivity(intent);
             }
         });
