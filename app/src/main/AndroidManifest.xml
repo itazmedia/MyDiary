@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <uses-permission android:name="android.permission.INTERNET" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,7 +22,7 @@
         <activity android:name=".ChangePasswordActivity" />
         <activity android:name=".Home" />
         <activity android:name=".ListData" />
-
+        <activity android:name=".AddNewDiaryActivity"></activity>
     </application>
 
 </manifest>
