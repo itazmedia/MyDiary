@@ -1,6 +1,9 @@
 package com.example.admin.mydiary;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.support.annotation.ColorInt;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -26,8 +29,8 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        btnRegister = (Button) findViewById(R.id.btnRegister);
-        tvEmail = (TextView) findViewById(R.id.txtEmail);
+        btnRegister = (Button) findViewById(R.id.btnSendRegister);
+        tvEmail = (TextView) findViewById(R.id.txtRegEmail);
         tvPassword = (TextView) findViewById(R.id.txtRegPassword);
         tvRepass = (TextView) findViewById(R.id.txtRegRePassword);
         regErrEmail = (TextView) findViewById(R.id.regErrEmail);
@@ -36,20 +39,30 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(tvEmail.getText().toString().equals(""))
-                    Toast.makeText(RegisterActivity.this,"Đăng ký thành công!!",Toast.LENGTH_SHORT).show();
+                if(tvEmail.getText().toString().equalsIgnoreCase(""))
+                {
+                    tvEmail.setHint("Bạn chưa nhập Email!!");
+                    tvEmail.setHintTextColor(Color.RED);
+                }
+
                 else
                     if(tvPassword.getText().toString().equalsIgnoreCase(""))
-                        regErrPass.setText("Bạn chưa nhập mật khẩu");
+                    {
+                        tvEmail.setHint("Bạn chưa nhập Email!!");
+                        tvEmail.setHintTextColor(Color.RED);
+                    }
                     else
                         if(!tvPassword.getText().toString().equalsIgnoreCase(tvRepass.getText().toString()))
-                            regErrRePass.setText("Mật khẩu không khớp");
+                        {
+                            Intent intent = new Intent(RegisterActivity.this, ChangePasswordActivity.class);
+                            startActivity(intent);
+                        }
                         else {
-                            mDatabase = FirebaseDatabase.getInstance().getReference();
+                          /*  mDatabase = FirebaseDatabase.getInstance().getReference();
                             DatabaseReference posts = mDatabase.child("users");
                             User u = new User(tvEmail.getText().toString(), tvPassword.getText().toString());
                             posts.push().setValue(u);
-                            Toast.makeText(RegisterActivity.this,"Đăng ký thành công!!",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegisterActivity.this,"Đăng ký thành công!!",Toast.LENGTH_SHORT).show(); */
                             Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                             startActivity(intent);
                         }
