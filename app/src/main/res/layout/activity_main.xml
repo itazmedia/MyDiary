@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0"
-        >
+        android:id="@+id/tableLayout">
         <TableRow
             android:gravity="center_horizontal" >
             <ImageView
@@ -54,23 +54,13 @@
                 android:layout_marginBottom="18dp"
                 android:fontFamily="sans-serif"
                 />
+
+
         </TableRow >
 
     </TableLayout>
 
-     <TextView
-            android:id="@+id/clickFogetPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Quên mật khẩu?"
-            android:textStyle="italic"
-            android:textSize="18sp"
-            android:textColor="#09dc50"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="240dp"
 
-        />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -107,5 +97,20 @@
             android:textSize="20dp"
             android:textStyle="bold"
             android:layout_centerInParent="true"/>
+
+    <TextView
+        android:id="@+id/clickFogetPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Quên mật khẩu?"
+        android:textColor="#09dc50"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        android:layout_below="@+id/tableLayout"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="34dp"
+        android:layout_marginEnd="34dp" />
 
 </RelativeLayout>

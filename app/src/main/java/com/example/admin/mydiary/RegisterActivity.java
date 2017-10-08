@@ -33,9 +33,6 @@ public class RegisterActivity extends AppCompatActivity {
         tvEmail = (TextView) findViewById(R.id.txtRegEmail);
         tvPassword = (TextView) findViewById(R.id.txtRegPassword);
         tvRepass = (TextView) findViewById(R.id.txtRegRePassword);
-        regErrEmail = (TextView) findViewById(R.id.regErrEmail);
-        regErrPass = (TextView) findViewById(R.id.regErrPass);
-        regErrRePass = (TextView) findViewById(R.id.regErrRepass);
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,21 +45,23 @@ public class RegisterActivity extends AppCompatActivity {
                 else
                     if(tvPassword.getText().toString().equalsIgnoreCase(""))
                     {
-                        tvEmail.setHint("Bạn chưa nhập Email!!");
-                        tvEmail.setHintTextColor(Color.RED);
+                        tvPassword.setHint("Bạn chưa nhập Mật khẩu!!");
+                        tvPassword.setHintTextColor(Color.RED);
                     }
                     else
                         if(!tvPassword.getText().toString().equalsIgnoreCase(tvRepass.getText().toString()))
                         {
-                            Intent intent = new Intent(RegisterActivity.this, ChangePasswordActivity.class);
-                            startActivity(intent);
+                            tvRepass.setText("");
+                            tvRepass.setHint("Mật khẩu không khớp!!");
+                            tvRepass.requestFocus();
+                            tvRepass.setHintTextColor(Color.RED);
                         }
                         else {
-                          /*  mDatabase = FirebaseDatabase.getInstance().getReference();
+                            mDatabase = FirebaseDatabase.getInstance().getReference();
                             DatabaseReference posts = mDatabase.child("users");
                             User u = new User(tvEmail.getText().toString(), tvPassword.getText().toString());
                             posts.push().setValue(u);
-                            Toast.makeText(RegisterActivity.this,"Đăng ký thành công!!",Toast.LENGTH_SHORT).show(); */
+                            Toast.makeText(RegisterActivity.this,"Đăng ký thành công!!",Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                             startActivity(intent);
                         }
