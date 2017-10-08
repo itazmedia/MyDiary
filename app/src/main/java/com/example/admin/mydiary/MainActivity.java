@@ -54,8 +54,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 if(txtEmail.getText().toString().equals("")) {
-                    txtPassword.setHint("Email không được bỏ trống!!");
-                    txtPassword.setHintTextColor(Color.RED);
+                    txtEmail.setHint("Email không được bỏ trống!!");
+                    txtEmail.setHintTextColor(Color.RED);
                     txtEmail.requestFocus();
                 }
                 else
@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     else
                     {
+                        mAuth = FirebaseAuth.getInstance();
                         login(txtEmail.getText().toString(),txtPassword.getText().toString());
                     }
             }
