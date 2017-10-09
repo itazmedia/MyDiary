@@ -22,6 +22,8 @@ public class Home extends AppCompatActivity {
     private ImageButton imgChangePassword;
 
     private  ImageButton imgLogoutHome;
+
+    private  ImageButton imgPlan;
     final Context context = this;
 
     @Override
@@ -58,6 +60,18 @@ public class Home extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+
+        imgPlan = (ImageButton) findViewById(R.id.txtinfo);
+        imgPlan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Home.this, PlanActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         imgListDiary = (ImageButton) findViewById(R.id.list);
         imgListDiary.setOnClickListener(new View.OnClickListener() {

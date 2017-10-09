@@ -133,6 +133,34 @@ android:background="#501078">
 
                 />
         </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#b4b5f4">
+            <ImageButton
+                android:id="@+id/txtinfo"
+                android:layout_width="205dp"
+                android:layout_height="140dp"
+                android:padding="16dp"
+                android:background="#b4b5f4"
+                android:src="@drawable/user"
+                android:scaleType="fitCenter">
+            </ImageButton>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:textAlignment="center"
+                android:text="Thông tin"
+                android:layout_below="@id/txtinfo"
+                android:textColor="#fff"
+                android:textSize="24sp"
+
+                />
+        </RelativeLayout>
     </TableRow>
+
+
 
 </TableLayout>
