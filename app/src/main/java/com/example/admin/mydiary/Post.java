@@ -10,7 +10,32 @@ import java.util.Date;
 
 public class Post {
     private String name;
+    private String content;
     private Date time;
+    private String email;
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Post(String name, String content, Date time, String email) {
+        this.name = name;
+        this.content = content;
+        this.time = time;
+        this.email = email;
+    }
 
     public Post(String name) {
         this.name = name;
