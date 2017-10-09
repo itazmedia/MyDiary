@@ -1,6 +1,8 @@
 package com.example.admin.mydiary;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,7 +12,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.*;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -19,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView txtRegister;
     private  Button btnLogin;
     private EditText txtEmail, txtPassword;
-    private DatabaseReference mDatabase;
+    private FirebaseAuth mAuth;
 // ...
     void tb(String notice){
         Toast.makeText(MainActivity.this,notice, Toast.LENGTH_LONG).show();
@@ -31,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         txtRegister = (TextView) findViewById(R.id.clickRegister);
-        mDatabase = FirebaseDatabase.getInstance().getReference();
         txtRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,35 +54,40 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 if(txtEmail.getText().toString().equals("")) {
-                    tb("Email khồng được bỏ trống");
+                    txtEmail.setHint("Email không được bỏ trống!!");
+                    txtEmail.setHintTextColor(Color.RED);
                     txtEmail.requestFocus();
                 }
                 else
                     if(txtPassword.getText().toString().equals("")){
-                        tb("Mật khẩu không được bỏ trống.");
+                        txtPassword.setHint("Mật khẩu không được bỏ trống!!");
+                        txtPassword.setHintTextColor(Color.RED);
                         txtPassword.requestFocus();
                     }
                     else
-                       if(!txtEmail.getText().toString().equals("admin"))
-                           tb("Email không tồn tại!!");
-                       else
-                           if(!txtPassword.getText().toString().equals("123456"))
-                               tb("Mật khẩu không chính xác!!");
-                           else
-                               if(txtEmail.getText().toString().equals("admin") && txtPassword.getText().toString().equals("123456")){
-                                      Intent intent;
-                                       intent = new Intent(MainActivity.this, Home.class);
-                                       startActivity(intent);
-                                       DatabaseReference posts = mDatabase.child("users");
-                                       User u = new User("trahieu97@gmail.com", "123456");
-                                        posts.push().setValue(u);
-                               }
-                               else
-                                   tb("Thông tin đăng nhập không chính xác!!");
-
+                    {
+                        mAuth = FirebaseAuth.getInstance();
+                        login(txtEmail.getText().toString(),txtPassword.getText().toString());
+                    }
             }
         });
 
+    }
+    private void login(String email, String password){
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Intent intent;
+                            intent = new Intent(MainActivity.this, Home.class);
+                            tb("Đăng nhập thành công!!");
+                            startActivity(intent);
+                        } else {
+                            tb("Đăng nhập thất bại, Kiểm tra Email hoặc mật khẩu!!");
+                        }
+                    }
+                });
     }
 
 
