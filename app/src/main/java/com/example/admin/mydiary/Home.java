@@ -63,7 +63,7 @@ public class Home extends AppCompatActivity {
 
 
 
-        imgPlan = (ImageButton) findViewById(R.id.txtinfo);
+        imgPlan = (ImageButton) findViewById(R.id.planHome);
         imgPlan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

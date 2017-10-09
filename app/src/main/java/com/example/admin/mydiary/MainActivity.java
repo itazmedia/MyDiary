@@ -66,8 +66,11 @@ public class MainActivity extends AppCompatActivity {
                     }
                     else
                     {
-                        mAuth = FirebaseAuth.getInstance();
-                        login(txtEmail.getText().toString(),txtPassword.getText().toString());
+//                        mAuth = FirebaseAuth.getInstance();
+//                        login(txtEmail.getText().toString(),txtPassword.getText().toString());
+
+                        Intent intent = new Intent(MainActivity.this, Home.class);
+                        startActivity(intent);
                     }
             }
         });
@@ -89,6 +92,10 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
+
+
+
+
 
 
 
