@@ -1,21 +1,37 @@
 package com.example.admin.mydiary;
 
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.preference.DialogPreference;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 public class Home extends AppCompatActivity {
     private ImageButton imgBtnList;
 
     private  ImageButton imgAddnew;
 
+    private ImageButton imgListDiary;
+
     private ImageButton imgChangePassword;
+
+    private  ImageButton imgLogoutHome;
+
+    private  ImageButton imgPlan;
+    final Context context = this;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+
         imgBtnList = (ImageButton) findViewById(R.id.list);
         imgBtnList.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,5 +60,61 @@ public class Home extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+
+        imgPlan = (ImageButton) findViewById(R.id.planHome);
+        imgPlan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Home.this, PlanActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        imgListDiary = (ImageButton) findViewById(R.id.list);
+        imgListDiary.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Home.this, ListData.class);
+                startActivity(intent);
+
+            }
+        });
+        imgLogoutHome = (ImageButton) findViewById(R.id.logOutHome);
+        imgLogoutHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder( context);
+                alertDialogBuilder.setTitle("My Diary");
+                alertDialogBuilder
+                        .setMessage("Bạn có muốn đăng xuất không!")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes",new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,int id) {
+
+                                Home.this.finish();
+                            }
+                        })
+                        .setNegativeButton("No",new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,int id) {
+
+                                dialog.cancel();
+                            }
+                        });
+
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+
+
+                alertDialog.show();
+
+            }
+        });
+
     }
+
+
+
 }

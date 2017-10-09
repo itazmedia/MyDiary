@@ -22,7 +22,8 @@
         <activity android:name=".ChangePasswordActivity" />
         <activity android:name=".Home" />
         <activity android:name=".ListData" />
-        <activity android:name=".AddNewDiaryActivity"></activity>
+        <activity android:name=".AddNewDiaryActivity" />
+        <activity android:name=".PlanActivity"></activity>
     </application>
 
 </manifest>
