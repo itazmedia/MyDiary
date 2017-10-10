@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private  Button btnLogin;
     private EditText txtEmail, txtPassword;
     private FirebaseAuth mAuth;
+    public static String email = "";
 // ...
     void tb(String notice){
         Toast.makeText(MainActivity.this,notice, Toast.LENGTH_LONG).show();
@@ -68,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                     {
 //                        mAuth = FirebaseAuth.getInstance();
 //                        login(txtEmail.getText().toString(),txtPassword.getText().toString());
-
+                        email = "admin@gmail.com";
                         Intent intent = new Intent(MainActivity.this, Home.class);
                         startActivity(intent);
                     }

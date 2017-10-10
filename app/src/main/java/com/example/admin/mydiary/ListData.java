@@ -3,28 +3,45 @@ package com.example.admin.mydiary;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ListData extends AppCompatActivity {
     ListView lvDanhSach;
+    private DatabaseReference mDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_data);
-        lvDanhSach = (ListView) findViewById(R.id.lvList);
-        ArrayList<Post> posts = new ArrayList<>();
-        posts.add(new Post("Hôm nay là thứ 2", "02/01/2017"));
-        posts.add(new Post("Hôm nay là thứ 3", "03/01/2017"));
-        posts.add(new Post("Hôm nay là thứ 4", "04/01/2017"));
-        posts.add(new Post("Hôm nay là thứ 5", "05/01/2017"));
-        posts.add(new Post("Hôm nay là thứ 6", "06/01/2017"));
-        posts.add(new Post("Hôm nay là thứ 7", "07/01/2017"));
-        posts.add(new Post("Hôm nay là Chủ nhật", "08/01/2017"));
-        PostAdapter adapter = new PostAdapter(this,posts);
-        lvDanhSach.setAdapter(adapter);
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        lvDanhSach = (ListView) findViewById(R.id.lvListData);
+
+//        final ArrayList<Post> posts = new ArrayList<>();
+//        postsDB.addValueEventListener(new ValueEventListener() {
+//
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                for(DataSnapshot postSnap : dataSnapshot.getChildren()) {
+//                    posts.add(dataSnapshot.getValue(Post.class));
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//
+//        });
+//        PostAdapter adapter = new PostAdapter(this,posts);
+//        lvDanhSach.setAdapter(adapter);
     }
 }

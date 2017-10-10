@@ -40,8 +40,7 @@ public class PostAdapter extends ArrayAdapter<Post> {
         TextView txtTime = (TextView) single_row.findViewById(R.id.tvTime);
         Post post = posts.get(position);
         txtName.setText(post.getName());
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        txtTime.setText(dateFormat.format(post.getTime()));
+        txtTime.setText(post.getTime());
         return single_row;
     }
 }
