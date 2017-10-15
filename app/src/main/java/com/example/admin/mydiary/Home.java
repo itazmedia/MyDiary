@@ -10,11 +10,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.Toast;
 
-public class Home extends AppCompatActivity {
-    private ImageButton imgBtnList;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Date;
+
+public class Home extends AppCompatActivity {
     private  ImageButton imgAddnew;
 
     private ImageButton imgListDiary;
@@ -22,6 +26,8 @@ public class Home extends AppCompatActivity {
     private ImageButton imgChangePassword;
 
     private  ImageButton imgLogoutHome;
+
+    private DatabaseReference mDatabase;
 
     private  ImageButton imgPlan;
     final Context context = this;
@@ -32,15 +38,6 @@ public class Home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
 
-        imgBtnList = (ImageButton) findViewById(R.id.list);
-        imgBtnList.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent();
-                intent = new Intent(Home.this, ListData.class);
-                startActivity(intent);
-            }
-        });
 
         imgChangePassword = (ImageButton) findViewById(R.id.changePassHome);
         imgChangePassword.setOnClickListener(new View.OnClickListener() {
@@ -73,11 +70,15 @@ public class Home extends AppCompatActivity {
         });
 
 
-        imgListDiary = (ImageButton) findViewById(R.id.list);
+        imgListDiary = (ImageButton) findViewById(R.id.listPost);
         imgListDiary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Home.this, ListData.class);
+                mDatabase = FirebaseDatabase.getInstance().getReference();
+                DatabaseReference postsDB = mDatabase.child("posts");
+                Post p = new Post("123456", "Hay lắm", "Quá hay", "Hay tuueetj", "hay Ghê");
+                postsDB.child(p.getPost_id()).setValue(p);
+                Intent intent = new Intent(Home.this, ChangePasswordActivity.class);
                 startActivity(intent);
 
             }

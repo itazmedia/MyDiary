@@ -34,7 +34,7 @@ android:background="#501078">
         android:layout_height="wrap_content"
         android:background="#25ac59">
         <ImageButton
-            android:id="@+id/list"
+            android:id="@+id/listPost"
             android:layout_width="205dp"
             android:layout_height="140dp"
             android:padding="16dp"
@@ -48,7 +48,7 @@ android:background="#501078">
             android:padding="8dp"
             android:textAlignment="center"
             android:text="Danh sách"
-            android:layout_below="@id/list"
+            android:layout_below="@id/listPost"
             android:textColor="#fff"
             android:textSize="24sp"
 

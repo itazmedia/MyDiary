@@ -17,11 +17,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.*;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
     private  Button btnLogin;
     private EditText txtEmail, txtPassword;
     private FirebaseAuth mAuth;
-    private DatabaseReference mDatabase;
     public static String email = "";
 // ...
     void tb(String notice){
@@ -64,43 +60,19 @@ public class MainActivity extends AppCompatActivity {
                     txtEmail.requestFocus();
                 }
                 else
-                if(txtPassword.getText().toString().equals("")){
-                    txtPassword.setHint("Mật khẩu không được bỏ trống!!");
-                    txtPassword.setHintTextColor(Color.RED);
-                    txtPassword.requestFocus();
-                }
-                else
-                {
-                 mDatabase = FirebaseDatabase.getInstance().getReference();
-                    DatabaseReference user = mDatabase.child("users");
-                    if(user != null)
-
-                        user.addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                                for(DataSnapshot data : dataSnapshot.getChildren()) {
-                                    User u = data.getValue(User.class);
-                                    if (u.getEmail().equalsIgnoreCase(txtEmail.getText().toString()) && u.getPassword().equalsIgnoreCase(txtPassword.getText().toString())) {
-                                        email = txtEmail.getText().toString();
-                                        Toast.makeText(MainActivity.this, "Đăng nhập thành công", Toast.LENGTH_LONG).show();
-                                        Intent intent = new Intent(MainActivity.this, Home.class);
-                                        startActivity(intent);
-                                    } else {
-                                        Toast.makeText(MainActivity.this, "Đăng nhập không thành công, kiểm tra Email và mật khẩu!!", Toast.LENGTH_LONG).show();
-                                    }
-                                }
-                            }
-
-                            @Override
-                            public void onCancelled(DatabaseError databaseError) {
-                            }
-                        });
-
-                    email = "admin@gmail.com";
-                    Intent intent = new Intent(MainActivity.this, Home.class);
-                    startActivity(intent);
-                }
+                    if(txtPassword.getText().toString().equals("")){
+                        txtPassword.setHint("Mật khẩu không được bỏ trống!!");
+                        txtPassword.setHintTextColor(Color.RED);
+                        txtPassword.requestFocus();
+                    }
+                    else
+                    {
+//                        mAuth = FirebaseAuth.getInstance();
+//                        login(txtEmail.getText().toString(),txtPassword.getText().toString());
+                        email = "admin@gmail.com";
+                        Intent intent = new Intent(MainActivity.this, Home.class);
+                        startActivity(intent);
+                    }
             }
         });
 
@@ -121,4 +93,11 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
+
+
+
+
+
+
+
 }
