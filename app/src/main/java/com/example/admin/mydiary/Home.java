@@ -74,11 +74,7 @@ public class Home extends AppCompatActivity {
         imgListDiary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mDatabase = FirebaseDatabase.getInstance().getReference();
-                DatabaseReference postsDB = mDatabase.child("posts");
-                Post p = new Post("123456", "Hay lắm", "Quá hay", "Hay tuueetj", "hay Ghê");
-                postsDB.child(p.getPost_id()).setValue(p);
-                Intent intent = new Intent(Home.this, ChangePasswordActivity.class);
+                Intent intent = new Intent(Home.this, ListData.class);
                 startActivity(intent);
 
             }

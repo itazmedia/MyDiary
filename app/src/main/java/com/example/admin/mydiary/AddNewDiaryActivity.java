@@ -45,6 +45,7 @@ public class AddNewDiaryActivity extends AppCompatActivity {
                 else
                 {
                     Post p = new Post();
+                    p.setPost_id(new Date().toString());
                     p.setName(tvTitle.getText().toString());
                     p.setContent(tvContent.getText().toString());
                     p.setEmail(MainActivity.email);
@@ -52,7 +53,9 @@ public class AddNewDiaryActivity extends AppCompatActivity {
                     mDatabase = FirebaseDatabase.getInstance().getReference();
                     DatabaseReference ref = mDatabase.child("posts");
                     ref.push().setValue(p);
-                    Toast.makeText(AddNewDiaryActivity.this, "Thêm mới thành công", Toast.LENGTH_SHORT);
+                    Toast.makeText(AddNewDiaryActivity.this, "Thêm mới thành công", Toast.LENGTH_SHORT).show();
+                    tvTitle.setText("");
+                    tvContent.setText("");
                 }
             }
         });

@@ -18,30 +18,44 @@ import java.util.Date;
 public class ListData extends AppCompatActivity {
     ListView lvDanhSach;
     private DatabaseReference mDatabase;
+     ArrayList<Post> posts = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_data);
         mDatabase = FirebaseDatabase.getInstance().getReference();
         lvDanhSach = (ListView) findViewById(R.id.lvListData);
+        final DatabaseReference postsDB = mDatabase.child("posts");
+        mDatabase.child("posts").child("default").setValue(new Post("default", "default","default","default","default"));
 
-//        final ArrayList<Post> posts = new ArrayList<>();
-//        postsDB.addValueEventListener(new ValueEventListener() {
-//
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                for(DataSnapshot postSnap : dataSnapshot.getChildren()) {
-//                    posts.add(dataSnapshot.getValue(Post.class));
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//
-//        });
-//        PostAdapter adapter = new PostAdapter(this,posts);
-//        lvDanhSach.setAdapter(adapter);
+        postsDB.addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot postSnap : dataSnapshot.getChildren()) {
+                    DatabaseReference dbR = postsDB.child(postSnap.getKey());
+                    dbR.addValueEventListener(new ValueEventListener(){
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            Post p = dataSnapshot.getValue(Post.class);
+                            posts.add(p);
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+
+        });
+        PostAdapter adapter = new PostAdapter(this,posts);
+        lvDanhSach.setAdapter(adapter);
     }
 }
