@@ -1,5 +1,6 @@
 package com.example.admin.mydiary;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -48,7 +49,7 @@ public class AddNewDiaryActivity extends AppCompatActivity {
                     p.setPost_id(new Date().toString());
                     p.setName(tvTitle.getText().toString());
                     p.setContent(tvContent.getText().toString());
-                    p.setEmail(MainActivity.email);
+                    p.setEmail("admin");
                     p.setTime("11/1/2016");
                     mDatabase = FirebaseDatabase.getInstance().getReference();
                     DatabaseReference ref = mDatabase.child("posts");
@@ -56,6 +57,8 @@ public class AddNewDiaryActivity extends AppCompatActivity {
                     Toast.makeText(AddNewDiaryActivity.this, "Thêm mới thành công", Toast.LENGTH_SHORT).show();
                     tvTitle.setText("");
                     tvContent.setText("");
+                    Intent intent = new Intent(AddNewDiaryActivity.this, ListData.class);
+                    startActivity(intent);
                 }
             }
         });

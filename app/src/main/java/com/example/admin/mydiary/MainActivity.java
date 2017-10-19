@@ -17,6 +17,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.*;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,7 +31,8 @@ public class MainActivity extends AppCompatActivity {
     private  Button btnLogin;
     private EditText txtEmail, txtPassword;
     private FirebaseAuth mAuth;
-    public static String email = "";
+    public String email = "";
+    public int count = 0;
     private DatabaseReference mDatabase;
 // ...
     void tb(String notice){
@@ -71,39 +74,8 @@ public class MainActivity extends AppCompatActivity {
                     }
                     else
                     {
-//                        mAuth = FirebaseAuth.getInstance();
-//                        login(txtEmail.getText().toString(),txtPassword.getText().toString());
-                        email = "admin@gmail.com";
-                        final DatabaseReference users = FirebaseDatabase.getInstance().getReference();
-                        users.addValueEventListener(new ValueEventListener() {
-
-                            @Override
-                            public void onDataChange(DataSnapshot dataSnapshot) {
-                                for(DataSnapshot postSnap : dataSnapshot.getChildren()) {
-                                    DatabaseReference dbR = users.child(postSnap.getKey());
-                                    dbR.addValueEventListener(new ValueEventListener(){
-                                        @Override
-                                        public void onDataChange(DataSnapshot dataSnapshot) {
-                                            User u = dataSnapshot.getValue(User.class);
-                                            //if(txtEmail.getText().toString().equalsIgnoreCase())
-                                        }
-
-                                        @Override
-                                        public void onCancelled(DatabaseError databaseError) {
-
-                                        }
-                                    });
-                                }
-                            }
-
-                            @Override
-                            public void onCancelled(DatabaseError databaseError) {
-
-                            }
-
-                        });
-                        Intent intent = new Intent(MainActivity.this, Home.class);
-                        startActivity(intent);
+                        mAuth = FirebaseAuth.getInstance();
+                        login(txtEmail.getText().toString(),txtPassword.getText().toString());
                     }
             }
         });
@@ -118,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
                             Intent intent;
                             intent = new Intent(MainActivity.this, Home.class);
                             tb("Đăng nhập thành công!!");
+                            FirebaseUser user = mAuth.getCurrentUser();
                             startActivity(intent);
                         } else {
                             tb("Đăng nhập thất bại, Kiểm tra Email hoặc mật khẩu!!");

@@ -13,6 +13,8 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -30,6 +32,8 @@ public class Home extends AppCompatActivity {
     private DatabaseReference mDatabase;
 
     private  ImageButton imgPlan;
+
+    private FirebaseAuth mAuth;
     final Context context = this;
 
     @Override
@@ -37,7 +41,8 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-
+        FirebaseUser fbU = mAuth.getInstance().getCurrentUser();
+        Toast.makeText(Home.this,fbU.getEmail(),Toast.LENGTH_LONG).show();
 
         imgChangePassword = (ImageButton) findViewById(R.id.changePassHome);
         imgChangePassword.setOnClickListener(new View.OnClickListener() {
@@ -90,7 +95,7 @@ public class Home extends AppCompatActivity {
                         .setCancelable(false)
                         .setPositiveButton("Yes",new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog,int id) {
-
+                                FirebaseAuth.getInstance().signOut();
                                 Home.this.finish();
                             }
                         })

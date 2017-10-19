@@ -65,37 +65,8 @@ public class RegisterActivity extends AppCompatActivity {
                             tvRepass.setHintTextColor(Color.RED);
                         }
                         else {
-                            mDatabase = FirebaseDatabase.getInstance().getReference();
-                            DatabaseReference dbr = mDatabase.child("users");
-                            dbr.push().setValue(new User(tvEmail.getText().toString(), tvPassword.getText().toString()));
-                            dbr.addChildEventListener(new ChildEventListener() {
-                                @Override
-                                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                                    Toast.makeText(RegisterActivity.this, "Đăng ký thành công!!", Toast.LENGTH_LONG).show();
-                                    Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-                                    startActivity(intent);
-                                }
-
-                                @Override
-                                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-                                }
-
-                                @Override
-                                public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-                                }
-
-                                @Override
-                                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-                                }
-
-                                @Override
-                                public void onCancelled(DatabaseError databaseError) {
-                                    Toast.makeText(RegisterActivity.this, "Đăng ký thất bại!!", Toast.LENGTH_LONG).show();
-                                }
-                            });
+                            mAuth = FirebaseAuth.getInstance();
+                            register(tvEmail.getText().toString(), tvPassword.getText().toString());
                         }
             }
         });
@@ -107,11 +78,11 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(RegisterActivity.this, "Đăng ký thành công!!", Toast.LENGTH_SHORT);
+                            Toast.makeText(RegisterActivity.this, "Đăng ký thành công!!", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                             startActivity(intent);
                         } else {
-                            Toast.makeText(RegisterActivity.this, "Đăng ký thất bại!!", Toast.LENGTH_SHORT);
+                            Toast.makeText(RegisterActivity.this, "Đăng ký thất bại!!", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
