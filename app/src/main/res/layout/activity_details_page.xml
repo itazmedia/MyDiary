@@ -27,6 +27,8 @@
                 android:hint="Còn bao nhiêu khốn khổ!"
                 android:inputType="text"
                 android:paddingBottom="16dp"
+                android:textStyle="bold"
+                android:paddingTop="8dp"
                 android:paddingLeft="8dp"
                 android:textColor="#000"
                 android:textColorHint="#000"
@@ -39,9 +41,10 @@
                 android:layout_height="wrap_content"
                 android:text="Nội dung"
                 android:textStyle="bold"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 android:textColor="#fff"
-                android:layout_marginBottom="8dp"/>
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="16dp"/>
         </TableRow>
         <TableRow>
             <EditText
@@ -58,6 +61,11 @@
                 android:text="Sự đời... nhiều lúc buồn cười nhưng cười không thành tiếng, chua chát.
 Nhà chúng tôi có bốn người, cứ mỗi buổi cơm mẹ tôi thường gọi tôi và thằng em tôi bằng cây roi nhặt nhạnh đâu đó trên đường, buổi cơm nào cũng vậy, em tôi điều hít hà mêu mếu còn tôi cắm mặt vào chén mà ăn.
 Cuộc sống ở quê yên bình lắm, cha tôi gọi dậy tập thể dục lúc 5h sáng, lúc mà gà gáy ngủ ò ó o o o o .. lúc mấy ông hàng xóm đem ấm trà ra ghế đẩu ngồi thì đào tạo tôi đứng trên đường người run bần bật, em tôi còn thảm hơn nữa, nó ngồi chòm hỏm một cách rúm ró, mắt nhắm nghiền ngủ gật trong rất hoạt kê."
+                android:gravity="top|left"
+                android:scrollHorizontally="false"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:layout_gravity="center_vertical|left"
                 />
         </TableRow >
 

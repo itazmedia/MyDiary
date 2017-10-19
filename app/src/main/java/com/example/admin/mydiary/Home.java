@@ -59,15 +59,15 @@ public class Home extends AppCompatActivity {
         });
 
 
-//
-//        imgLove = (ImageButton) findViewById(R.id.love);
-//        imgLove.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(Home.this, PlanActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+
+        imgLove = (ImageButton) findViewById(R.id.loveDiary);
+        imgLove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Home.this, LoveDiaryActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
         imgListDiary = (ImageButton) findViewById(R.id.listPost);
