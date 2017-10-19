@@ -85,12 +85,12 @@ android:background="#501078">
             android:layout_height="wrap_content"
             android:background="#330897">
             <ImageButton
-                android:id="@+id/planHome"
-                android:layout_width="205dp"
+                android:id="@+id/loveDiary"
+                android:layout_width="185dp"
                 android:layout_height="140dp"
                 android:padding="16dp"
                 android:background="#330897"
-                android:src="@drawable/list"
+                android:src="@drawable/love"
                 android:scaleType="fitCenter">
             </ImageButton>
             <TextView
@@ -98,8 +98,8 @@ android:background="#501078">
                 android:layout_height="wrap_content"
                 android:padding="8dp"
                 android:textAlignment="center"
-                android:text="Kế hoạch"
-                android:layout_below="@id/planHome"
+                android:text="Yêu thích"
+                android:layout_below="@id/loveDiary"
                 android:textColor="#fff"
                 android:textSize="24sp"
 

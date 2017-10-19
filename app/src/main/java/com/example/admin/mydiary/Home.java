@@ -29,7 +29,7 @@ public class Home extends AppCompatActivity {
 
     private DatabaseReference mDatabase;
 
-    private  ImageButton imgPlan;
+    private  ImageButton imgLove;
     final Context context = this;
 
     @Override
@@ -59,15 +59,15 @@ public class Home extends AppCompatActivity {
         });
 
 
-
-        imgPlan = (ImageButton) findViewById(R.id.planHome);
-        imgPlan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Home.this, PlanActivity.class);
-                startActivity(intent);
-            }
-        });
+//
+//        imgLove = (ImageButton) findViewById(R.id.love);
+//        imgLove.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(Home.this, PlanActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
 
         imgListDiary = (ImageButton) findViewById(R.id.listPost);
