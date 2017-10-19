@@ -18,6 +18,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -62,8 +65,37 @@ public class RegisterActivity extends AppCompatActivity {
                             tvRepass.setHintTextColor(Color.RED);
                         }
                         else {
-                            mAuth = FirebaseAuth.getInstance();
-                            register(tvEmail.getText().toString(), tvPassword.getText().toString());
+                            mDatabase = FirebaseDatabase.getInstance().getReference();
+                            DatabaseReference dbr = mDatabase.child("users");
+                            dbr.push().setValue(new User(tvEmail.getText().toString(), tvPassword.getText().toString()));
+                            dbr.addChildEventListener(new ChildEventListener() {
+                                @Override
+                                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                    Toast.makeText(RegisterActivity.this, "Đăng ký thành công!!", Toast.LENGTH_LONG).show();
+                                    Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                                    startActivity(intent);
+                                }
+
+                                @Override
+                                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                }
+
+                                @Override
+                                public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                }
+
+                                @Override
+                                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+                                    Toast.makeText(RegisterActivity.this, "Đăng ký thất bại!!", Toast.LENGTH_LONG).show();
+                                }
+                            });
                         }
             }
         });

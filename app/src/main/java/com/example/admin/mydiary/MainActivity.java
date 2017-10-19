@@ -17,8 +17,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.*;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText txtEmail, txtPassword;
     private FirebaseAuth mAuth;
     public static String email = "";
+    private DatabaseReference mDatabase;
 // ...
     void tb(String notice){
         Toast.makeText(MainActivity.this,notice, Toast.LENGTH_LONG).show();
@@ -70,6 +74,34 @@ public class MainActivity extends AppCompatActivity {
 //                        mAuth = FirebaseAuth.getInstance();
 //                        login(txtEmail.getText().toString(),txtPassword.getText().toString());
                         email = "admin@gmail.com";
+                        final DatabaseReference users = FirebaseDatabase.getInstance().getReference();
+                        users.addValueEventListener(new ValueEventListener() {
+
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                for(DataSnapshot postSnap : dataSnapshot.getChildren()) {
+                                    DatabaseReference dbR = users.child(postSnap.getKey());
+                                    dbR.addValueEventListener(new ValueEventListener(){
+                                        @Override
+                                        public void onDataChange(DataSnapshot dataSnapshot) {
+                                            User u = dataSnapshot.getValue(User.class);
+                                            //if(txtEmail.getText().toString().equalsIgnoreCase())
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+
+                        });
                         Intent intent = new Intent(MainActivity.this, Home.class);
                         startActivity(intent);
                     }

@@ -26,7 +26,7 @@ public class ListData extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference();
         lvDanhSach = (ListView) findViewById(R.id.lvListData);
         final DatabaseReference postsDB = mDatabase.child("posts");
-        mDatabase.child("posts").child("default").setValue(new Post("default", "default","default","default","default"));
+        mDatabase.child("posts").child("d").setValue(new Post("default", "default","default","default","default"));
 
         postsDB.addValueEventListener(new ValueEventListener() {
 
