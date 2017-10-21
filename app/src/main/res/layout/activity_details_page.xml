@@ -16,36 +16,38 @@
 
         <TableRow>
 
-            <EditText
-                android:id="@+id/txtTitle"
+            <TextView
+                android:id="@+id/tvDetailTitle"
                 android:layout_width="match_parent"
                 android:layout_marginBottom="8dp"
                 android:layout_span="2"
                 android:layout_weight="1"
+                android:textStyle="bold"
                 android:background="#fff"
                 android:fontFamily="sans-serif"
                 android:hint="Còn bao nhiêu khốn khổ!"
                 android:inputType="text"
-                android:paddingBottom="16dp"
-                android:paddingLeft="8dp"
+                android:padding="8dp"
                 android:textColor="#000"
                 android:textColorHint="#000"
-                android:textSize="22dp" />
+                android:textSize="28sp" />
         </TableRow>
 
         <TableRow>
             <TextView
+                android:id="@+id/tvDetailDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nội dung"
+                android:text="11/1/2017"
                 android:textStyle="bold"
                 android:textSize="18sp"
+                android:paddingLeft="8dp"
                 android:textColor="#fff"
                 android:layout_marginBottom="8dp"/>
         </TableRow>
         <TableRow>
-            <EditText
-                android:id="@+id/txtContent"
+            <TextView
+                android:id="@+id/tvDetailContent"
                 android:inputType="textMultiLine"
                 android:textSize="20sp"
                 android:textColor="#000"
@@ -54,6 +56,7 @@
                 android:fontFamily="sans-serif"
                 android:lines="15"
                 android:background="#fff"
+                android:paddingLeft="8dp"
                 android:layout_width="match_parent"
                 android:text="Sự đời... nhiều lúc buồn cười nhưng cười không thành tiếng, chua chát.
 Nhà chúng tôi có bốn người, cứ mỗi buổi cơm mẹ tôi thường gọi tôi và thằng em tôi bằng cây roi nhặt nhạnh đâu đó trên đường, buổi cơm nào cũng vậy, em tôi điều hít hà mêu mếu còn tôi cắm mặt vào chén mà ăn.
@@ -64,11 +67,11 @@ Cuộc sống ở quê yên bình lắm, cha tôi gọi dậy tập thể dục 
     </TableLayout>
 
     <Button
-        android:id="@+id/btnSavePost"
+        android:id="@+id/btnDetailEdit"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:background="#9b1ef4"
-        android:text="Lưu"
+        android:text="Xoá"
         android:textColor="#fff"
         android:textSize="20dp"
         android:textStyle="bold"
@@ -82,7 +85,7 @@ Cuộc sống ở quê yên bình lắm, cha tôi gọi dậy tập thể dục 
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:background="#d0ccd2"
-        android:text="Hủy"
+        android:text="Sửa"
         android:textColor="#161616"
         android:textSize="20dp"
         android:textStyle="bold"

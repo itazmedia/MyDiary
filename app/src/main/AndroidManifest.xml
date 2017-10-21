@@ -24,7 +24,7 @@
         <activity android:name=".ListData" />
         <activity android:name=".AddNewDiaryActivity" />
         <activity android:name=".PlanActivity" />
-        <activity android:name=".DetailsPageActivity"></activity>
+        <activity android:name=".DetailsPageActivity" />
     </application>
 
 </manifest>

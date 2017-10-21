@@ -2,6 +2,8 @@ package com.example.admin.mydiary;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -57,5 +59,13 @@ public class ListData extends AppCompatActivity {
         });
         PostAdapter adapter = new PostAdapter(this,posts);
         lvDanhSach.setAdapter(adapter);
+        lvDanhSach.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(ListData.this,"Bạn đã chọn nước "+ posts.get(position).getEmail(),Toast.LENGTH_LONG).show();
+
+            }
+        });
     }
+
 }
