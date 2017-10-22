@@ -74,12 +74,12 @@ public class MainActivity extends AppCompatActivity {
                     }
                     else
                     {
-                       /* mAuth = FirebaseAuth.getInstance();
-                        login(txtEmail.getText().toString(),txtPassword.getText().toString()); */
-                        Intent intent;
+                        mAuth = FirebaseAuth.getInstance();
+                        login(txtEmail.getText().toString(),txtPassword.getText().toString());
+                        /*Intent intent;
                         intent = new Intent(MainActivity.this, Home.class);
                         tb("Đăng nhập thành công!!");
-                        startActivity(intent);
+                        startActivity(intent);*/
                     }
             }
         });

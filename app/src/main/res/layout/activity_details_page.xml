@@ -67,7 +67,7 @@ Cuộc sống ở quê yên bình lắm, cha tôi gọi dậy tập thể dục 
     </TableLayout>
 
     <Button
-        android:id="@+id/btnDetailEdit"
+        android:id="@+id/btnDetailDelete"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:background="#9b1ef4"
@@ -81,7 +81,7 @@ Cuộc sống ở quê yên bình lắm, cha tôi gọi dậy tập thể dục 
 
         />
     <Button
-        android:id="@+id/btnCancle"
+        android:id="@+id/btnDetailEdit"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:background="#d0ccd2"

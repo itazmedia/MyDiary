@@ -88,7 +88,7 @@ public class Home extends AppCompatActivity {
                                 Home.this.finish();
                             }
                         })
-                        .setNegativeButton("K",new DialogInterface.OnClickListener() {
+                        .setNegativeButton("Không",new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog,int id) {
 
                                 dialog.cancel();

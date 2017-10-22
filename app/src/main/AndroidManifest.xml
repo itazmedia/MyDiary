@@ -25,6 +25,7 @@
         <activity android:name=".AddNewDiaryActivity" />
         <activity android:name=".PlanActivity" />
         <activity android:name=".DetailsPageActivity" />
+        <activity android:name=".EditPostActivity"></activity>
     </application>
 
 </manifest>

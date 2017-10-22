@@ -1,9 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.admin.mydiary.EditPostActivity">
+    android:background="#501078"
+    tools:context="com.example.admin.mydiary.AddNewDiaryActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="8dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TableRow>
+            <EditText
+                android:id="@+id/txtEditTitle"
+                android:inputType="text"
+                android:hint="Nhập tiêu đề..."
+                android:textColorHint="#000"
+                android:layout_marginBottom="8dp"
+                android:textSize="22dp"
+                android:textColor="#000"
+                android:layout_span="2"
+                android:layout_weight="1"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:paddingLeft="16dp"
+                android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                android:background="#fff"
+                android:layout_width="match_parent"
+                />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:id="@+id/tvEditTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mời bạn nhập nội dung."
+                android:textStyle="bold"
+                android:layout_marginLeft="16dp"
+                android:textSize="20sp"
+                android:textColor="#fff"
+                android:layout_marginBottom="8dp"/>
+        </TableRow>
+        <TableRow>
+            <EditText
+                android:id="@+id/txtEditContent"
+                android:inputType="textMultiLine"
+                android:textSize="20sp"
+                android:textColor="#000"
+                android:layout_span="2"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif"
+                android:lines="15"
+                android:background="#fff"
+                android:layout_width="match_parent"
+                android:gravity="top|left"
+                android:scrollHorizontally="false"
+
+                />
+        </TableRow >
+
+    </TableLayout>
+
+    <Button
+        android:id="@+id/btnSaveEdit"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:background="#9b1ef4"
+        android:text="Lưu"
+        android:textColor="#fff"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="16dp"
+
+        />
+    <Button
+        android:id="@+id/btnCancleEdit"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:background="#c6c3c7"
+        android:text="Hủy"
+        android:textColor="#161616"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="159dp"
+
+        />
+</RelativeLayout>
