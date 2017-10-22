@@ -1,5 +1,4 @@
 package com.example.admin.mydiary;
-
 import android.content.Intent;
 import android.nfc.Tag;
 import android.support.annotation.NonNull;
@@ -19,11 +18,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class ChangePasswordActivity extends AppCompatActivity {
-    private EditText txtOldPass, txtNewPass, txtReNewPass, txtEmail;
+    private EditText txtOldPass, txtNewPass, txtReNewPass;
     private Button btnSubmit;
-
-    AuthCredential credential = EmailAuthProvider
-            .getCredential("user@example.com", "password1234");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +46,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
                             Toast.makeText(getBaseContext(), "Error", Toast.LENGTH_SHORT).show();
                         } else {
                             changePass(txtNewPass.getText().toString());
-                            Intent intent = new Intent(ChangePasswordActivity.this, MainActivity.class);
-                            startActivity(intent);
+
                         }
                     }
                 }
@@ -70,12 +65,15 @@ public class ChangePasswordActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(ChangePasswordActivity.this, "Password is updated!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ChangePasswordActivity.this, "Thay đổi mật khẩu thành công!", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(ChangePasswordActivity.this, MainActivity.class);
+                            startActivity(intent);
                         } else {
-                            Toast.makeText(ChangePasswordActivity.this, "Failed to update password!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ChangePasswordActivity.this, "Thay đổi mật khẩu thất bại!!", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
 //
     }
 }
+
