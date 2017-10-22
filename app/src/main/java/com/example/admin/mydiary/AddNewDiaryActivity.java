@@ -1,5 +1,6 @@
 package com.example.admin.mydiary;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +9,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -45,19 +48,29 @@ public class AddNewDiaryActivity extends AppCompatActivity {
                 else
                 {
                     Post p = new Post();
-                    p.setPost_id(new Date().toString());
+                    SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyyhhmmss");
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+                    p.setPost_id(sdf.format(new Date()));
                     p.setName(tvTitle.getText().toString());
                     p.setContent(tvContent.getText().toString());
-                    p.setEmail(MainActivity.email);
-                    p.setTime("11/1/2016");
+                    p.setEmail(user.getEmail());
+                    p.setTime(getDate());
                     mDatabase = FirebaseDatabase.getInstance().getReference();
                     DatabaseReference ref = mDatabase.child("posts");
-                    ref.push().setValue(p);
+                    ref.child(p.getPost_id()).setValue(p);
                     Toast.makeText(AddNewDiaryActivity.this, "Thêm mới thành công", Toast.LENGTH_SHORT).show();
                     tvTitle.setText("");
                     tvContent.setText("");
+                    Intent intent = new Intent(AddNewDiaryActivity.this, ListData.class);
+                    startActivity(intent);
                 }
             }
         });
+    }
+
+    public String getDate(){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        return simpleDateFormat.format(new Date());
     }
 }

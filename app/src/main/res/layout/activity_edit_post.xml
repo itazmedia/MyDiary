@@ -5,49 +5,54 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#501078"
-    tools:context="com.example.admin.mydiary.DetailsPageActivity">
+    tools:context="com.example.admin.mydiary.AddNewDiaryActivity">
 
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0"
         tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="8dp">
+        tools:layout_editor_absoluteX="8dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <TableRow>
-
-            <TextView
-                android:id="@+id/tvDetailTitle"
-                android:layout_width="match_parent"
+            <EditText
+                android:id="@+id/txtEditTitle"
+                android:inputType="text"
+                android:hint="Nhập tiêu đề..."
+                android:textColorHint="#000"
                 android:layout_marginBottom="8dp"
+                android:textSize="22dp"
+                android:textColor="#000"
                 android:layout_span="2"
                 android:layout_weight="1"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:paddingLeft="16dp"
+                android:fontFamily="sans-serif"
                 android:textStyle="bold"
                 android:background="#fff"
-                android:fontFamily="sans-serif"
-                android:hint="Còn bao nhiêu khốn khổ!"
-                android:inputType="text"
-                android:padding="8dp"
-                android:textColor="#000"
-                android:textColorHint="#000"
-                android:textSize="28sp" />
+                android:layout_width="match_parent"
+                />
         </TableRow>
 
         <TableRow>
             <TextView
-                android:id="@+id/tvDetailDate"
+                android:id="@+id/tvEditTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="11/1/2017"
+                android:text="Mời bạn nhập nội dung."
                 android:textStyle="bold"
-                android:textSize="18sp"
-                android:paddingLeft="8dp"
+                android:layout_marginLeft="16dp"
+                android:textSize="20sp"
                 android:textColor="#fff"
                 android:layout_marginBottom="8dp"/>
         </TableRow>
         <TableRow>
-            <TextView
-                android:id="@+id/tvDetailContent"
+            <EditText
+                android:id="@+id/txtEditContent"
                 android:inputType="textMultiLine"
                 android:textSize="20sp"
                 android:textColor="#000"
@@ -56,22 +61,21 @@
                 android:fontFamily="sans-serif"
                 android:lines="15"
                 android:background="#fff"
-                android:paddingLeft="8dp"
                 android:layout_width="match_parent"
-                android:text="Sự đời... nhiều lúc buồn cười nhưng cười không thành tiếng, chua chát.
-Nhà chúng tôi có bốn người, cứ mỗi buổi cơm mẹ tôi thường gọi tôi và thằng em tôi bằng cây roi nhặt nhạnh đâu đó trên đường, buổi cơm nào cũng vậy, em tôi điều hít hà mêu mếu còn tôi cắm mặt vào chén mà ăn.
-Cuộc sống ở quê yên bình lắm, cha tôi gọi dậy tập thể dục lúc 5h sáng, lúc mà gà gáy ngủ ò ó o o o o .. lúc mấy ông hàng xóm đem ấm trà ra ghế đẩu ngồi thì đào tạo tôi đứng trên đường người run bần bật, em tôi còn thảm hơn nữa, nó ngồi chòm hỏm một cách rúm ró, mắt nhắm nghiền ngủ gật trong rất hoạt kê."
+                android:gravity="top|left"
+                android:scrollHorizontally="false"
+
                 />
         </TableRow >
 
     </TableLayout>
 
     <Button
-        android:id="@+id/btnDetailDelete"
+        android:id="@+id/btnSaveEdit"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:background="#9b1ef4"
-        android:text="Xoá"
+        android:text="Lưu"
         android:textColor="#fff"
         android:textSize="20dp"
         android:textStyle="bold"
@@ -81,16 +85,17 @@ Cuộc sống ở quê yên bình lắm, cha tôi gọi dậy tập thể dục 
 
         />
     <Button
-        android:id="@+id/btnDetailEdit"
+        android:id="@+id/btnCancleEdit"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:background="#d0ccd2"
-        android:text="Sửa"
+        android:background="#c6c3c7"
+        android:text="Hủy"
         android:textColor="#161616"
         android:textSize="20dp"
         android:textStyle="bold"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="16dp"
         android:layout_marginLeft="159dp"
+
         />
 </RelativeLayout>
