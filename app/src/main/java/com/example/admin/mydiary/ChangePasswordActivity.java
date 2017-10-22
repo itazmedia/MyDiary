@@ -38,19 +38,18 @@ public class ChangePasswordActivity extends AppCompatActivity {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (txtNewPass.getText().toString().equalsIgnoreCase("")) {
-                    txtNewPass.setHint("Không được trống!");
+                if (txtOldPass.getText().toString().equalsIgnoreCase("")) {
+                    txtOldPass.setHint("Không được trống!");
                 } else {
-                    if (txtReNewPass.getText().toString().equalsIgnoreCase("")) {
-                        txtReNewPass.setHint("Không đươc trống!");
+                    if (txtNewPass.getText().toString().equalsIgnoreCase("")) {
+                        txtNewPass.setHint("Không đươc trống!");
                     } else {
-                        if (txtOldPass.getText().toString().equalsIgnoreCase("")) {
-                            txtOldPass.setHint("Không được trống!");
+                        if (txtReNewPass.getText().toString().equalsIgnoreCase("")) {
+                            txtReNewPass.setHint("Không được trống!");
                         } else if (!txtNewPass.getText().toString().equalsIgnoreCase(txtReNewPass.getText().toString())) {
                             Toast.makeText(getBaseContext(), "Error", Toast.LENGTH_SHORT).show();
                         } else {
-                            changePass(txtEmail.getText().toString(), txtOldPass.getText().toString(), txtNewPass.getText().toString(),
-                                    txtReNewPass.getText().toString());
+                            changePass(txtNewPass.getText().toString());
                             Intent intent = new Intent(ChangePasswordActivity.this, MainActivity.class);
                             startActivity(intent);
                         }
@@ -61,33 +60,22 @@ public class ChangePasswordActivity extends AppCompatActivity {
         });
     }
 
-    public void changePass(String email, String oldPass, final String newPass, String reNewPass)
+
+    public void changePass(String newPass)
     {
-        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-
-        AuthCredential credential = EmailAuthProvider
-                .getCredential("user@example.com", "password1234");
-
-        user.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
-                    user.updatePassword(newPass).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()) {
-                                Toast.makeText(getBaseContext(),"Password updated", Toast.LENGTH_SHORT).show();
-
-                            } else {
-                                Toast.makeText(getBaseContext(),"Error password not updated", Toast.LENGTH_SHORT).show();
-                            }
+        user.updatePassword(newPass.trim())
+                .addOnCompleteListener(new OnCompleteListener() {
+                    @Override
+                    public void onComplete(@NonNull Task task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(ChangePasswordActivity.this, "Password is updated!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(ChangePasswordActivity.this, "Failed to update password!", Toast.LENGTH_SHORT).show();
                         }
-                    });
-                } else {
-                    Toast.makeText(getBaseContext(),"Error auth failed", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+                    }
+                });
+//
     }
 }
