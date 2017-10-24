@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/DiaryBG"
+    android:background="@drawable/diary_bg"
     tools:context="com.example.admin.mydiary.AddNewDiaryActivity">
 
     <TableLayout

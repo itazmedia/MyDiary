@@ -59,7 +59,7 @@ public class EditPostActivity extends AppCompatActivity {
                     String post_id = intent.getStringExtra("post_id");
                     mDatabase = FirebaseDatabase.getInstance().getReference();
                     mDatabase.child("posts").child(post_id).child("name").setValue(tvEditTitle.getText().toString());
-                    mDatabase.child("posts").child(post_id).child("content").setValue(tvEditTitle.getText().toString());
+                    mDatabase.child("posts").child(post_id).child("content").setValue(tvEditContent.getText().toString());
                     Toast.makeText(EditPostActivity.this,"Chỉnh sửa thành công!!", Toast.LENGTH_SHORT).show();
                     Intent intent2 = new Intent(EditPostActivity.this, ListData.class);
                     startActivity(intent2);
