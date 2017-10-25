@@ -50,7 +50,7 @@ public class Home extends AppCompatActivity {
         });
 
 
-        imgAddnew = (ImageButton) findViewById(R.id.addnew);
+        imgAddnew = (ImageButton) findViewById(R.id.addnewdiary);
         imgAddnew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,11 +58,6 @@ public class Home extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-
-
-
 
         imgListDiary = (ImageButton) findViewById(R.id.listPost);
         imgListDiary.setOnClickListener(new View.OnClickListener() {

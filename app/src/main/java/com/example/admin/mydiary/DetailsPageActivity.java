@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -41,10 +42,14 @@ public class DetailsPageActivity extends AppCompatActivity {
             public void onClick(View v) {
                 mDatabase = FirebaseDatabase.getInstance().getReference();
                 DatabaseReference item = mDatabase.child("posts").child(post_id);
-                item.removeValue();
-                Toast.makeText(DetailsPageActivity.this, "Đã xoá thành công!! ", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(DetailsPageActivity.this,ListData.class);
-                startActivity(intent);
+                item.removeValue(new DatabaseReference.CompletionListener() {
+                    @Override
+                    public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                        Toast.makeText(DetailsPageActivity.this, "Đã xoá thành công!! ", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(DetailsPageActivity.this,ListData.class);
+                        startActivity(intent);
+                    }
+                });
              }
         });
 
