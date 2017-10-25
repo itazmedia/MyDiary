@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#501078"
+    android:background="@drawable/diary_bg"
     tools:context="com.example.admin.mydiary.AddNewDiaryActivity">
 
     <TableLayout
@@ -22,10 +22,10 @@
                 android:id="@+id/txtEditTitle"
                 android:inputType="text"
                 android:hint="Nhập tiêu đề..."
-                android:textColorHint="#000"
+                android:textColorHint="#501078"
                 android:layout_marginBottom="8dp"
                 android:textSize="22dp"
-                android:textColor="#000"
+                android:textColor="#501078"
                 android:layout_span="2"
                 android:layout_weight="1"
                 android:paddingBottom="8dp"
@@ -33,7 +33,6 @@
                 android:paddingLeft="16dp"
                 android:fontFamily="sans-serif"
                 android:textStyle="bold"
-                android:background="#fff"
                 android:layout_width="match_parent"
                 />
         </TableRow>
@@ -43,27 +42,31 @@
                 android:id="@+id/tvEditTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mời bạn nhập nội dung."
+                android:text="NỘI DUNG"
                 android:textStyle="bold"
-                android:layout_marginLeft="16dp"
+                android:layout_marginLeft="150dp"
                 android:textSize="20sp"
-                android:textColor="#fff"
+                android:textColor="#501078"
                 android:layout_marginBottom="8dp"/>
         </TableRow>
         <TableRow>
             <EditText
                 android:id="@+id/txtEditContent"
-                android:inputType="textMultiLine"
-                android:textSize="20sp"
-                android:textColor="#000"
+                android:layout_width="match_parent"
+                android:layout_alignBottom="@+id/btnSavePost"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="32dp"
+                android:layout_marginLeft="32dp"
                 android:layout_span="2"
                 android:layout_weight="1"
                 android:fontFamily="sans-serif"
-                android:lines="15"
-                android:background="#fff"
-                android:layout_width="match_parent"
                 android:gravity="top|left"
+                android:inputType="textMultiLine"
+                android:lines="12"
                 android:scrollHorizontally="false"
+                android:textColor="#501078"
+                android:textSize="20sp"
 
                 />
         </TableRow >
@@ -82,20 +85,20 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="16dp"
+        android:layout_marginRight="32dp"
 
         />
     <Button
         android:id="@+id/btnCancleEdit"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:background="#c6c3c7"
+        android:background="#a6815e"
         android:text="Hủy"
         android:textColor="#161616"
         android:textSize="20dp"
         android:textStyle="bold"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="16dp"
-        android:layout_marginLeft="159dp"
-
+        android:layout_marginLeft="128dp"
         />
 </RelativeLayout>
