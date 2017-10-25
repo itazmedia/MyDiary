@@ -26,7 +26,6 @@ public class DetailsPageActivity extends AppCompatActivity {
         title = intent.getStringExtra("title");
         content = intent.getStringExtra("content");
         time = intent.getStringExtra("time");
-        Toast.makeText(DetailsPageActivity.this,post_id, Toast.LENGTH_LONG).show();
         btnSua = (Button) findViewById(R.id.btnDetailEdit);
         btnXoa = (Button) findViewById(R.id.btnDetailDelete);
         tvDetailContent = (TextView) findViewById(R.id.tvDetailContent);
